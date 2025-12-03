@@ -2,22 +2,22 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Datos públicos - Tesis Román Landa</title>
+    <title>Datos Públicos · Tesina Moneyball en la Liga Nacional</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
         :root {
-            --bg: #0f172a;
-            --bg-card: #020617;
-            --accent: #38bdf8;
-            --accent-soft: rgba(56, 189, 248, 0.1);
-            --text-main: #e5e7eb;
-            --text-muted: #9ca3af;
-            --border-subtle: #1f2937;
-            --danger: #f97373;
-            --radius-lg: 16px;
+            --primary: #FF6B35;
+            --primary-dark: #e65f30;
+            --secondary: #00B8A9;
+            --bg: #1D2D44;
+            --bg-card: #F4F4F9;
+            --text-main: #1D2D44;
+            --text-muted: #5f6b80;
+            --border-subtle: #d3d7e3;
+            --radius-lg: 18px;
             --radius-md: 10px;
-            --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+            --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.35);
         }
 
         * {
@@ -28,7 +28,7 @@
             margin: 0;
             padding: 0;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top left, #1e293b, #020617 45%, #020617 100%);
+            background: radial-gradient(circle at top left, #243552, #0f172a 55%, #050814 100%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -52,6 +52,7 @@
             justify-content: space-between;
             gap: 16px;
             align-items: flex-start;
+            color: #F4F4F9;
         }
 
         .brand {
@@ -61,11 +62,11 @@
         }
 
         .logo-circle {
-            width: 40px;
-            height: 40px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, transparent 70%);
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.6);
             position: relative;
         }
 
@@ -77,48 +78,48 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 14px;
-            color: #0b1120;
+            font-size: 15px;
+            color: #F4F4F9;
         }
 
         .brand-text h1 {
             margin: 0;
             font-size: 22px;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.02em;
         }
 
         .brand-text p {
-            margin: 0;
+            margin: 2px 0 0;
             font-size: 13px;
-            color: var(--text-muted);
+            color: #cbd5f5;
         }
 
         .badge {
             padding: 6px 12px;
             border-radius: 999px;
-            border: 1px solid var(--accent-soft);
-            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(244, 244, 249, 0.4);
+            background: rgba(15, 23, 42, 0.75);
             display: flex;
             align-items: center;
             gap: 8px;
             font-size: 12px;
-            color: var(--text-muted);
+            color: #e5e7eb;
         }
 
         .badge-dot {
-            width: 8px;
-            height: 8px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
-            background: #22c55e;
-            box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+            background: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
         }
 
         .card {
-            background: radial-gradient(circle at top left, #1e293b 0, #020617 55%);
+            background: var(--bg-card);
             border-radius: 24px;
             padding: 22px 22px 26px;
             box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(148, 163, 184, 0.08);
+            border: 1px solid rgba(211, 215, 227, 0.8);
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -133,6 +134,7 @@
         .card-header h2 {
             margin: 0;
             font-size: 18px;
+            color: var(--primary);
         }
 
         .card-header p {
@@ -145,15 +147,28 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 4px;
+            margin-top: 6px;
             font-size: 12px;
             color: var(--text-muted);
         }
 
         .pill {
-            padding: 3px 9px;
+            padding: 4px 10px;
             border-radius: 999px;
-            border: 1px solid rgba(148, 163, 184, 0.6);
+            border: 1px solid rgba(211, 215, 227, 0.9);
+            background: #ffffff;
+        }
+
+        .pill-primary {
+            border-color: rgba(255, 107, 53, 0.2);
+            background: rgba(255, 107, 53, 0.06);
+            color: var(--primary-dark);
+        }
+
+        .pill-secondary {
+            border-color: rgba(0, 184, 169, 0.2);
+            background: rgba(0, 184, 169, 0.05);
+            color: var(--secondary);
         }
 
         .controls {
@@ -175,14 +190,14 @@
             padding: 8px 30px 8px 28px;
             border-radius: var(--radius-md);
             border: 1px solid var(--border-subtle);
-            background: rgba(15, 23, 42, 0.9);
+            background: #ffffff;
             color: var(--text-main);
             font-size: 13px;
             outline: none;
         }
 
         .search-box input::placeholder {
-            color: #4b5563;
+            color: #a0a5b5;
         }
 
         .search-icon {
@@ -191,7 +206,7 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 13px;
-            color: #6b7280;
+            color: #9ca3af;
         }
 
         .small-text {
@@ -200,7 +215,7 @@
         }
 
         .link-raw {
-            color: var(--accent);
+            color: var(--secondary);
             text-decoration: none;
             font-size: 12px;
         }
@@ -212,8 +227,8 @@
         .table-wrapper {
             margin-top: 8px;
             border-radius: 18px;
-            border: 1px solid rgba(31, 41, 55, 0.9);
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.98));
+            border: 1px solid rgba(211, 215, 227, 0.9);
+            background: #ffffff;
             overflow: hidden;
         }
 
@@ -224,7 +239,7 @@
         }
 
         thead {
-            background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.9));
+            background: linear-gradient(to right, rgba(255, 107, 53, 0.14), rgba(0, 184, 169, 0.14));
         }
 
         th, td {
@@ -233,37 +248,54 @@
         }
 
         th {
-            font-weight: 500;
-            color: #cbd5f5;
-            border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+            font-weight: 600;
+            color: var(--text-main);
+            border-bottom: 1px solid rgba(211, 215, 227, 0.9);
         }
 
         tbody tr:nth-child(odd) {
-            background: rgba(15, 23, 42, 0.95);
+            background: #F9FAFB;
         }
 
         tbody tr:nth-child(even) {
-            background: rgba(15, 23, 42, 0.98);
+            background: #ffffff;
         }
 
         tbody tr:hover {
-            background: rgba(15, 23, 42, 1);
+            background: rgba(0, 184, 169, 0.06);
         }
 
         td {
-            border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid rgba(243, 244, 246, 0.9);
         }
 
         .file-name {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
             font-size: 12px;
-            color: #e5e7eb;
+            color: var(--text-main);
             word-break: break-all;
         }
 
         .file-meta {
             font-size: 11px;
             color: var(--text-muted);
+        }
+
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border-radius: 999px;
+            padding: 3px 8px;
+            background: #F4F4F9;
+            border: 1px solid rgba(211, 215, 227, 0.9);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .tag-pill span {
+            font-size: 9px;
+            opacity: 0.8;
         }
 
         .actions {
@@ -284,13 +316,14 @@
             gap: 6px;
             background: none;
             color: inherit;
+            text-decoration: none;
         }
 
         .btn-download {
-            background: radial-gradient(circle at top left, var(--accent), #0ea5e9);
-            color: #0b1120;
+            background: linear-gradient(135deg, var(--secondary), #06a396);
+            color: #F4F4F9;
             font-weight: 600;
-            box-shadow: 0 6px 14px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 6px 14px rgba(0, 184, 169, 0.35);
         }
 
         .btn-download:hover {
@@ -298,59 +331,32 @@
             transform: translateY(-0.5px);
         }
 
-        .btn-ghost {
-            border-color: rgba(75, 85, 99, 0.8);
+        .no-results {
+            padding: 16px 14px 14px;
+            font-size: 13px;
             color: var(--text-muted);
         }
 
-        .btn-ghost:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .tag-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            border-radius: 999px;
-            padding: 3px 8px;
-            background: rgba(15, 23, 42, 1);
-            border: 1px solid rgba(31, 41, 55, 0.9);
-            font-size: 11px;
+        .loading {
+            padding: 16px 14px 14px;
+            font-size: 13px;
             color: var(--text-muted);
-        }
-
-        .tag-pill span {
-            font-size: 9px;
-            opacity: 0.8;
         }
 
         footer {
             margin-top: 10px;
             font-size: 11px;
-            color: var(--text-muted);
+            color: #cbd5f5;
             text-align: center;
         }
 
         footer a {
-            color: var(--accent);
+            color: var(--secondary);
             text-decoration: none;
         }
 
         footer a:hover {
             text-decoration: underline;
-        }
-
-        .pill-variant {
-            border-color: rgba(56, 189, 248, 0.5);
-            background: rgba(15, 23, 42, 0.9);
-            color: var(--accent);
-        }
-
-        .no-results {
-            padding: 16px 14px 14px;
-            font-size: 13px;
-            color: var(--text-muted);
         }
 
         @media (max-width: 720px) {
@@ -362,8 +368,8 @@
                 padding: 16px 14px 20px;
             }
 
-            th:nth-child(3), td:nth-child(3) {
-                display: none; /* oculta columna extra en móvil si hace falta */
+            th:nth-child(2), td:nth-child(2) {
+                display: none;
             }
         }
     </style>
@@ -374,30 +380,30 @@
         <div class="brand">
             <div class="logo-circle"></div>
             <div class="brand-text">
-                <h1>Datos públicos · Tesis LNB 24/25</h1>
-                <p>Licenciatura en Estadística · Universidad Nacional de Rosario</p>
+                <h1>Datos Públicos · Tesina Moneyball en la Liga Nacional</h1>
+                <p>Análisis de roles de jugadores mediante métricas avanzadas y clustering</p>
             </div>
         </div>
         <div class="badge">
             <span class="badge-dot"></span>
-            <span>Repositorio de datos activo</span>
+            <span>Repositorio de datos activo · LNB 2024/2025</span>
         </div>
     </header>
 
     <main>
         <section class="card">
             <div class="card-header">
-                <h2>Descarga de archivos .parquet</h2>
+                <h2>Descarga de archivos en formato Parquet</h2>
                 <p>
-                    A continuación se listan los archivos utilizados en el trabajo de tesis. 
-                    Cada enlace permite descargar el archivo en formato <strong>Parquet</strong>, 
-                    listo para ser analizado en R, Python u otras herramientas.
+                    Los siguientes archivos corresponden a partidos de la Liga Nacional de Básquet 2024/25,
+                    utilizados en la tesina <em>“Moneyball en la Liga Nacional: análisis de roles de jugadores mediante métricas avanzadas y clustering”</em>.
+                    Cada enlace permite descargar el dataset de un partido en formato <strong>Parquet</strong>.
                 </p>
 
                 <div class="card-meta">
-                    <span class="pill">Temporada: LNB 2024/2025</span>
+                    <span class="pill pill-primary">Temporada: LNB 2024/2025</span>
                     <span class="pill">Formato: Parquet</span>
-                    <span class="pill pill-variant">Autor: Román Landa (UNR)</span>
+                    <span class="pill pill-secondary">Autor: Román Landa (UNR)</span>
                 </div>
             </div>
 
@@ -424,6 +430,9 @@
                     <!-- Filas generadas por JavaScript -->
                     </tbody>
                 </table>
+                <div id="loading" class="loading">
+                    Cargando lista de archivos desde el repositorio…
+                </div>
                 <div id="noResults" class="no-results" style="display:none;">
                     No se encontraron archivos que coincidan con el filtro aplicado.
                 </div>
@@ -431,7 +440,7 @@
 
             <div style="margin-top: 8px; display: flex; justify-content: space-between; align-items: center; gap:8px; flex-wrap:wrap;">
                 <span class="small-text">
-                    Esta interfaz se publica únicamente con fines de transparencia y reproducibilidad del trabajo de tesis.
+                    Esta interfaz se publica con fines de transparencia y reproducibilidad de la investigación.
                 </span>
                 <a class="link-raw" href="https://github.com/RomanLanda11/lnb-data-2024-25" target="_blank" rel="noopener noreferrer">
                     Ver repositorio en GitHub ↗
@@ -441,30 +450,24 @@
     </main>
 
     <footer>
-        &copy; <span id="year"></span> · Román Landa · Tesis de Licenciatura en Estadística (UNR)
+        &copy; <span id="year"></span> · Román Landa · Tesina de Licenciatura en Estadística (UNR)
     </footer>
 </div>
 
 <script>
-    // 🔧 EDITÁ SOLO ESTE ARRAY cuando agregues más archivos
-    const files = [
-        "0_atenas_c_vs_boca_007_10_2024_22_10.parquet",
-        "1_obras_vs_platense_008_10_2024_20_00.parquet",
-        "2_instituto_vs_olimpico_lb_008_10_2024_21_00.parquet"
-        // Agregá más acá...
-    ];
-
-    const BASE_PATH = "public_data/"; // carpeta donde están los .parquet
-
     const fileTableBody = document.getElementById("fileTableBody");
     const fileCountSpan = document.getElementById("fileCount");
     const searchInput = document.getElementById("searchInput");
     const noResults = document.getElementById("noResults");
+    const loading = document.getElementById("loading");
+    let files = [];
+
+    const BASE_PATH = "public_data/";
+    const GITHUB_API_URL = "https://api.github.com/repos/RomanLanda11/lnb-data-2024-25/contents/public_data";
 
     function renderTable(filterText = "") {
         fileTableBody.innerHTML = "";
         const normalizedFilter = filterText.trim().toLowerCase();
-
         let visibleCount = 0;
 
         files.forEach((fileName, index) => {
@@ -484,7 +487,7 @@
                 <div class="file-meta">
                     <span class="tag-pill"><span>●</span> Tipo: Parquet</span>
                     &nbsp;
-                    <span class="file-meta">Index: ${index}</span>
+                    <span class="file-meta">Índice: ${index}</span>
                 </div>
             `;
             tr.appendChild(tdMeta);
@@ -504,7 +507,25 @@
         });
 
         fileCountSpan.textContent = visibleCount.toString();
-        noResults.style.display = visibleCount === 0 ? "block" : "none";
+        noResults.style.display = visibleCount === 0 && files.length > 0 ? "block" : "none";
+    }
+
+    async function loadFiles() {
+        try {
+            const resp = await fetch(GITHUB_API_URL);
+            const data = await resp.json();
+
+            files = (data || [])
+                .filter(item => item.type === "file" && item.name.toLowerCase().endsWith(".parquet"))
+                .map(item => item.name)
+                .sort();
+
+            loading.style.display = "none";
+            renderTable();
+        } catch (e) {
+            loading.textContent = "No se pudieron cargar los archivos desde GitHub. Verifique la conexión o la configuración del repositorio.";
+            console.error(e);
+        }
     }
 
     searchInput.addEventListener("input", (e) => {
@@ -513,8 +534,7 @@
 
     document.getElementById("year").textContent = new Date().getFullYear().toString();
 
-    // Primera renderización
-    renderTable();
+    loadFiles();
 </script>
 </body>
 </html>
