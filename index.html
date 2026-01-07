@@ -163,13 +163,16 @@
     .table-wrap{
       border:1px solid rgba(215,219,230,.95);
       border-radius: 16px;
-      overflow:hidden;
+      overflow:auto;
       background:#fff;
+      max-width: 100%;
+      -webkit-overflow-scrolling: touch;
     }
     table{
-      width:100%;
-      border-collapse:collapse;
-      font-size:13px;
+    width: max-content;          
+    min-width: 100%;             
+    border-collapse:collapse;
+    font-size:13px;
     }
     thead{
       background: linear-gradient(to right, rgba(255,107,53,.14), rgba(0,184,169,.14));
