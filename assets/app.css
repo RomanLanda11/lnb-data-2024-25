@@ -70,48 +70,20 @@ main,
 .brand-lockup {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-width: 220px;
-  height: 54px;
+  width: 230px;
+  height: 72px;
   overflow: hidden;
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.96);
-  padding: 8px 12px;
+  padding: 8px 14px;
   text-decoration: none;
 }
 
-.brand-lockup strong,
-.brand-lockup small {
+.brand-lockup img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
-}
-
-.brand-lockup strong {
-  color: var(--ink);
-  font-size: 15px;
-  line-height: 1;
-}
-
-.brand-lockup small {
-  margin-top: 4px;
-  color: var(--soft-ink);
-  font-size: 11px;
-}
-
-.brand-icon,
-.iso-mark {
-  background:
-    linear-gradient(135deg, transparent 42%, var(--ink) 43% 49%, transparent 50%),
-    linear-gradient(135deg, transparent 28%, var(--teal) 29% 36%, transparent 37%),
-    linear-gradient(135deg, transparent 50%, var(--orange) 51% 58%, transparent 59%);
-}
-
-.brand-icon {
-  flex: 0 0 auto;
-  width: 34px;
-  height: 34px;
-  border-bottom: 5px solid var(--ink);
-  border-left: 5px solid var(--ink);
-  transform: skew(-10deg);
 }
 
 .nav-actions {
@@ -224,20 +196,14 @@ main,
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--white);
+  padding: 8px;
 }
 
-.iso-mark::before {
-  content: "";
+.iso-mark img {
   display: block;
-  width: 58px;
-  height: 58px;
-  margin: 14px;
-  border-bottom: 8px solid var(--ink);
-  border-left: 8px solid var(--ink);
-  transform: skew(-10deg);
-  background:
-    linear-gradient(135deg, transparent 40%, var(--teal) 41% 48%, transparent 49%),
-    linear-gradient(135deg, transparent 55%, var(--orange) 56% 64%, transparent 65%);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .project-facts {
@@ -631,7 +597,8 @@ tbody tr:hover {
   }
 
   .brand-lockup {
-    min-width: 210px;
+    width: 210px;
+    height: 66px;
   }
 
   .hero,
