@@ -2,575 +2,251 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Datos Públicos · Tesina Moneyball en la Liga Nacional</title>
-
-  <style>
-    :root{
-      --orange:#FF6B35;
-      --navy:#1D2D44;
-      --light:#F4F4F9;
-      --teal:#00B8A9;
-      --muted:#6b7280;
-      --border:#d7dbe6;
-      --shadow:0 18px 45px rgba(0,0,0,.25);
-      --r-lg:18px;
-      --r-md:12px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
-      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:var(--sans);
-      background: radial-gradient(circle at top left, #243552, #0f172a 55%, #050814 100%);
-      color: var(--light);
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-    }
-    .page{
-      width:100%;
-      max-width:1200px;
-      padding:28px 16px 44px;
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-    }
-    header{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    .brand{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      max-width:900px;
-    }
-    .logo{
-      width:46px;height:46px;border-radius:50%;
-      background: linear-gradient(135deg, var(--orange), var(--teal));
-      box-shadow:0 0 30px rgba(255,107,53,.55);
-      display:flex;align-items:center;justify-content:center;
-      font-weight:800;color:var(--light);
-      letter-spacing:.05em;
-    }
-    .title h1{
-      margin:0;
-      font-size:18px;
-      line-height:1.25;
-      letter-spacing:.01em;
-    }
-    .title p{
-      margin:6px 0 0;
-      color:#cbd5f5;
-      font-size:13px;
-    }
-    .badge{
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(244,244,249,.35);
-      background: rgba(15,23,42,.65);
-      color:var(--light);
-      font-size:12px;
-      display:flex;align-items:center;gap:8px;
-    }
-    .dot{
-      width:9px;height:9px;border-radius:50%;
-      background:#10b981;
-      box-shadow:0 0 10px rgba(16,185,129,.8);
-    }
-
-    .card{
-      background: var(--light);
-      color: var(--navy);
-      border-radius:24px;
-      border:1px solid rgba(215,219,230,.9);
-      box-shadow: var(--shadow);
-      padding:18px 18px 14px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .card h2{
-      margin:0;
-      font-size:16px;
-      color: var(--orange);
-    }
-    .card .desc{
-      margin:0;
-      font-size:13px;
-      color: var(--muted);
-      line-height:1.45;
-    }
-
-    .controls{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-      margin-top:4px;
-    }
-    .search{
-      flex:1 1 240px;
-      position:relative;
-    }
-    .search input{
-      width:100%;
-      padding:9px 10px 9px 30px;
-      border-radius: var(--r-md);
-      border:1px solid var(--border);
-      outline:none;
-      font-size:13px;
-      background:#fff;
-      color:var(--navy);
-    }
-    .search span{
-      position:absolute;
-      left:10px; top:50%;
-      transform:translateY(-50%);
-      color:#9aa3b2;
-      font-size:13px;
-    }
-    .meta{
-      font-size:12px;
-      color: var(--muted);
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:flex-end;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:4px 10px;
-      border-radius:999px;
-      background: rgba(0,184,169,.08);
-      border:1px solid rgba(0,184,169,.18);
-      color:#06766d;
-      font-size:12px;
-    }
-    .pill b{color:#045b54}
-
-    .table-wrap{
-      border:1px solid rgba(215,219,230,.95);
-      border-radius: 16px;
-      overflow:auto;
-      background:#fff;
-      max-width: 100%;
-      -webkit-overflow-scrolling: touch;
-    }
-    table{
-    width: max-content;          
-    min-width: 100%;             
-    border-collapse:collapse;
-    font-size:13px;
-    }
-    thead{
-      background: linear-gradient(to right, rgba(255,107,53,.14), rgba(0,184,169,.14));
-    }
-    th, td{
-      padding:9px 10px;
-      border-bottom:1px solid rgba(243,244,246,.95);
-      text-align:left;
-      vertical-align:top;
-    }
-    th{
-      font-weight:700;
-      color:var(--navy);
-      user-select:none;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-    th .sort{
-      font-size:11px;
-      color:#64748b;
-      margin-left:6px;
-      font-family:var(--mono);
-    }
-    tbody tr:nth-child(odd){background:#fafbfc}
-    tbody tr:hover{background: rgba(0,184,169,.06)}
-    td{
-      color:#111827;
-      word-break:break-word;
-      max-width:420px;
-    }
-
-    .pagination{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      padding:10px 2px 0;
-    }
-    .pager{
-      display:flex;
-      gap:8px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .btn{
-      border:1px solid var(--border);
-      background:#fff;
-      padding:7px 10px;
-      border-radius:999px;
-      cursor:pointer;
-      font-size:12px;
-      color:var(--navy);
-    }
-    .btn:hover{border-color: rgba(0,184,169,.55); color:#06766d}
-    .btn:disabled{
-      opacity:.55; cursor:not-allowed;
-    }
-    select{
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:7px 10px;
-      background:#fff;
-      font-size:12px;
-    }
-
-    .status{
-      font-size:12px;
-      color: var(--muted);
-      padding:6px 0 0;
-    }
-
-    footer{
-      text-align:center;
-      color:#cbd5f5;
-      font-size:11px;
-      margin-top:10px;
-    }
-
-    @media(max-width:720px){
-      .title h1{font-size:16px}
-      td{max-width:260px}
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Datos públicos para garantizar la reproducibilidad de la tesina de Licenciatura en Estadística de Román Landa en la UNR." />
+  <title>Datos reproducibles · Tesina LNB 2024/25 · GL Basket Data</title>
+  <link rel="stylesheet" href="assets/app.css" />
 </head>
-
 <body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <div class="logo">RL</div>
-        <div class="title">
-          <h1>Datos Público · Tesina Moneyball en la Liga Nacional: análisis de roles de jugadores mediante métricas avanzadas y clustering</h1>
-          <p>Vista interactiva de estadísticas de jugadores (tabla navegable)</p>
+  <div class="app-shell">
+    <header class="site-header">
+      <nav class="topbar" aria-label="Navegación principal">
+        <a class="brand-lockup" href="#inicio" aria-label="GL Basket Data">
+          <span class="brand-icon" aria-hidden="true"></span>
+          <span>
+            <strong>GL Basket Data</strong>
+            <small>Estadísticas deportivas</small>
+          </span>
+        </a>
+        <div class="nav-actions">
+          <a href="#jugadores">Jugadores</a>
+          <a href="#glosario">Glosario</a>
+          <a href="#partidos">Partidos</a>
+          <a href="https://linktr.ee/LGBasketData" target="_blank" rel="noopener noreferrer">Linktree</a>
+          <a class="button button-primary" href="public_data/df_players.csv" download="df_players.csv">Descargar CSV</a>
         </div>
-      </div>
-      <div class="badge"><span class="dot"></span> Datos visibles en la web (GitHub Pages)</div>
+      </nav>
+
+      <section class="hero" id="inicio">
+        <div class="hero-copy">
+          <p class="eyebrow">Licenciatura en Estadística · Universidad Nacional de Rosario</p>
+          <h1>Datos públicos para garantizar la reproducibilidad de mi tesis.</h1>
+          <p>
+            Repositorio interactivo de los datos usados en la tesis
+            <strong>“Moneyball en la Liga Nacional: análisis de roles de jugadores mediante métricas avanzadas y clustering”</strong>,
+            realizada por Román Landa para la carrera de Licenciatura en Estadística de la UNR.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#jugadores">Explorar jugadores</a>
+            <a class="button button-secondary" href="#partidos">Ver partidos</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Resumen del proyecto">
+          <div class="iso-mark" aria-hidden="true"></div>
+          <dl class="project-facts">
+            <div>
+              <dt>Autor</dt>
+              <dd>Román Landa</dd>
+            </div>
+            <div>
+              <dt>Carrera</dt>
+              <dd>Lic. en Estadística</dd>
+            </div>
+            <div>
+              <dt>Institución</dt>
+              <dd>UNR</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
     </header>
 
-    <section class="card">
-      <h2>Tabla de estadísticas (df_players)</h2>
-      <p class="desc">
-        Esta tabla muestra directamente el dataset consolidado de jugadores. Podés buscar, ordenar por columnas y paginar.
-        <br><b>Fuente:</b> <code style="font-family:var(--mono)">public_data/df_players.csv</code>
-        <br><br>
-        <b>Convención de nombres de columnas:</b><br>
-        • <code style="font-family:var(--mono)">_suma</code>: suma total de la estadística a lo largo de toda la temporada para cada jugador.<br>
-        • <code style="font-family:var(--mono)">_prom_40min</code>: promedio del jugador normalizado a 40 minutos en cancha.
-      </p>
+    <main>
+      <section class="stats-grid" aria-label="Resumen de datos">
+        <article class="metric-card">
+          <span>Jugadores</span>
+          <strong id="metricPlayers">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Equipos</span>
+          <strong id="metricTeams">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Columnas</span>
+          <strong id="metricColumns">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Partidos parquet</span>
+          <strong id="metricGames">0</strong>
+        </article>
+      </section>
 
-      <div class="controls">
-        <div class="search">
-          <span>🔍</span>
-          <input id="searchInput" type="text" placeholder="Buscar por cualquier columna (nombre, equipo, etc.)">
+      <section class="panel" id="jugadores">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h2>Jugadores</h2>
+          </div>
+          <p>Base consolidada de jugadores publicada para auditar, replicar y reutilizar los resultados de la tesis.</p>
         </div>
 
-        <div class="meta">
-          <span class="pill"><b id="rowCount">0</b> filas</span>
-          <span class="pill"><b id="colCount">0</b> columnas</span>
-
-          <a class="btn" href="public_data/df_players.csv" download="df_players.csv" style="text-decoration:none;">
-            ⬇ Descargar CSV
-          </a>
+        <div class="toolbar">
+          <label class="field field-wide">
+            <span>Buscar</span>
+            <input id="playerSearch" type="search" placeholder="Nombre, equipo, rival o métrica" autocomplete="off" />
+          </label>
+          <label class="field">
+            <span>Equipo</span>
+            <select id="teamFilter"></select>
+          </label>
+          <label class="field">
+            <span>Rival</span>
+            <select id="rivalFilter"></select>
+          </label>
+          <label class="field">
+            <span>Métricas</span>
+            <select id="metricGroupFilter">
+              <option value="all" selected>Todas</option>
+              <option value="core">Principales</option>
+              <option value="sum">Totales</option>
+              <option value="per40">Por 40 min</option>
+              <option value="advanced">Avanzadas</option>
+            </select>
+          </label>
         </div>
-      </div>
 
-      <div class="table-wrap">
-        <table>
-          <thead id="thead"></thead>
-          <tbody id="tbody"></tbody>
-        </table>
-      </div>
-
-      <div class="pagination">
-        <div class="pager">
-          <button id="prevBtn" class="btn">← Anterior</button>
-          <button id="nextBtn" class="btn">Siguiente →</button>
-          <span class="status" id="pageStatus">Página 1</span>
+        <div class="secondary-toolbar">
+          <div class="result-status" id="playerStatus">Cargando jugadores...</div>
+          <div class="table-actions">
+            <button class="button button-ghost" id="resetPlayerFilters" type="button">Limpiar filtros</button>
+            <button class="button button-ghost" id="toggleColumns" type="button" aria-expanded="false">Columnas</button>
+          </div>
         </div>
 
-        <div class="pager">
-          <label class="status">Filas por página:</label>
-          <select id="pageSize">
-            <option value="25">25</option>
-            <option value="50" selected>50</option>
-            <option value="100">100</option>
-            <option value="250">250</option>
-          </select>
+        <div class="column-panel" id="columnPanel" hidden>
+          <div class="column-panel-head">
+            <strong>Columnas visibles</strong>
+            <button class="text-button" id="restoreColumns" type="button">Restaurar vista</button>
+          </div>
+          <div class="column-options" id="columnOptions"></div>
         </div>
-      </div>
 
-      <div class="status" id="loadStatus">Cargando CSV…</div>
-    </section>
+        <div class="table-frame">
+          <table>
+            <thead id="playersHead"></thead>
+            <tbody id="playersBody"></tbody>
+          </table>
+        </div>
 
-    <footer>
-      &copy; <span id="year"></span> · Román Landa · UNR · Tesina de Licenciatura en Estadística
+        <div class="pagination">
+          <div class="pager">
+            <button class="button button-ghost" id="prevPlayers" type="button">Anterior</button>
+            <button class="button button-ghost" id="nextPlayers" type="button">Siguiente</button>
+            <span id="playerPageStatus">Página 1</span>
+          </div>
+          <label class="field field-inline">
+            <span>Filas</span>
+            <select id="playerPageSize">
+              <option value="25">25</option>
+              <option value="50" selected>50</option>
+              <option value="100">100</option>
+              <option value="250">250</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel" id="glosario">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Referencia</p>
+            <h2>Glosario</h2>
+          </div>
+          <p>Definiciones breves para interpretar las columnas principales y las métricas avanzadas del dataset.</p>
+        </div>
+
+        <div class="glossary-grid">
+          <article class="glossary-card">
+            <h3>Convenciones de columnas</h3>
+            <dl>
+              <div><dt>_suma</dt><dd>Total acumulado de la estadística en la temporada.</dd></div>
+              <div><dt>_prom_40min</dt><dd>Producción normalizada a 40 minutos en cancha.</dd></div>
+              <div><dt>TiempoJuego</dt><dd>Tiempo promedio mostrado en formato de minutos y segundos.</dd></div>
+              <div><dt>partido_key</dt><dd>Identificador legible del partido de referencia.</dd></div>
+            </dl>
+          </article>
+
+          <article class="glossary-card">
+            <h3>Uso y eficiencia</h3>
+            <dl>
+              <div><dt>USG%</dt><dd>Porcentaje estimado de posesiones del equipo usadas por el jugador.</dd></div>
+              <div><dt>TS%</dt><dd>Eficiencia real de tiro, integrando dobles, triples y libres.</dd></div>
+              <div><dt>eFG%</dt><dd>Porcentaje efectivo de campo, ponderando el valor extra del triple.</dd></div>
+              <div><dt>FTr</dt><dd>Frecuencia con la que el jugador llega a la línea de libres.</dd></div>
+            </dl>
+          </article>
+
+          <article class="glossary-card">
+            <h3>Juego y posesiones</h3>
+            <dl>
+              <div><dt>TOV%</dt><dd>Porcentaje de posesiones que terminan en pérdida.</dd></div>
+              <div><dt>AST/TOVr</dt><dd>Relación entre asistencias y pérdidas.</dd></div>
+              <div><dt>PACE</dt><dd>Ritmo estimado de posesiones del partido.</dd></div>
+              <div><dt>plus_minus</dt><dd>Diferencia de puntos del equipo mientras el jugador está en cancha.</dd></div>
+            </dl>
+          </article>
+
+          <article class="glossary-card">
+            <h3>Impacto</h3>
+            <dl>
+              <div><dt>ORTG</dt><dd>Puntos producidos o permitidos por 100 posesiones ofensivas estimadas.</dd></div>
+              <div><dt>DRTG</dt><dd>Puntos recibidos por 100 posesiones defensivas estimadas.</dd></div>
+              <div><dt>game_score</dt><dd>Índice sintético de rendimiento individual en el partido o temporada.</dd></div>
+              <div><dt>clutch</dt><dd>Producción en tramos finales de partido definidos como situaciones cerradas.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="partidos">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Repositorio</p>
+            <h2>Partidos</h2>
+          </div>
+          <p>Archivos fuente en parquet para reconstruir el procesamiento y sostener la reproducibilidad del trabajo.</p>
+        </div>
+
+        <div class="toolbar">
+          <label class="field field-wide">
+            <span>Buscar partido</span>
+            <input id="gameSearch" type="search" placeholder="Boca, Instituto, 20/05/2025..." autocomplete="off" />
+          </label>
+          <label class="field">
+            <span>Equipo</span>
+            <select id="gameTeamFilter"></select>
+          </label>
+          <label class="field">
+            <span>Mes</span>
+            <select id="gameMonthFilter"></select>
+          </label>
+          <button class="button button-ghost align-end" id="resetGameFilters" type="button">Limpiar filtros</button>
+        </div>
+
+        <div class="result-status" id="gameStatus">Cargando partidos...</div>
+        <div class="game-grid" id="gameGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> GL Basket Data</span>
+      <span>
+        Román Landa · Licenciatura en Estadística · Universidad Nacional de Rosario ·
+        <a href="https://linktr.ee/LGBasketData" target="_blank" rel="noopener noreferrer">Linktree</a>
+      </span>
     </footer>
   </div>
 
-<script>
-  // 📌 Archivo fuente (subilo al repo)
-  const CSV_URL = "public_data/df_players.csv";
-
-  // Estado
-  let rawRows = [];
-  let filteredRows = [];
-  let headers = [];
-
-  let sortKey = null;
-  let sortDir = "asc"; // asc | desc
-
-  let page = 1;
-  let pageSize = 50;
-
-  const thead = document.getElementById("thead");
-  const tbody = document.getElementById("tbody");
-  const searchInput = document.getElementById("searchInput");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const pageStatus = document.getElementById("pageStatus");
-  const loadStatus = document.getElementById("loadStatus");
-  const rowCount = document.getElementById("rowCount");
-  const colCount = document.getElementById("colCount");
-  const pageSizeSelect = document.getElementById("pageSize");
-
-  // CSV parser simple (sirve para CSV "normal"; si tenés comillas/commas complejas, decime y lo hacemos robusto)
-  function parseCSV(text) {
-    const lines = text.replace(/\r/g, "").split("\n").filter(l => l.trim().length > 0);
-    const hdr = splitCSVLine(lines[0]);
-    const rows = [];
-
-    for (let i = 1; i < lines.length; i++) {
-      const parts = splitCSVLine(lines[i]);
-      const obj = {};
-      for (let j = 0; j < hdr.length; j++) {
-        obj[hdr[j]] = parts[j] ?? "";
-      }
-      rows.push(obj);
-    }
-    return { headers: hdr, rows };
-  }
-
-  function splitCSVLine(line) {
-    // Maneja comillas dobles básicas
-    const out = [];
-    let cur = "";
-    let inQuotes = false;
-
-    for (let i = 0; i < line.length; i++) {
-      const ch = line[i];
-      if (ch === '"') {
-        // si es doble comilla escapada
-        if (inQuotes && line[i + 1] === '"') {
-          cur += '"';
-          i++;
-        } else {
-          inQuotes = !inQuotes;
-        }
-      } else if (ch === "," && !inQuotes) {
-        out.push(cur);
-        cur = "";
-      } else {
-        cur += ch;
-      }
-    }
-    out.push(cur);
-    return out;
-  }
-
-  function setCounts() {
-    rowCount.textContent = filteredRows.length.toLocaleString("es-AR");
-    colCount.textContent = headers.length.toLocaleString("es-AR");
-  }
-
-  function buildHeader() {
-    const tr = document.createElement("tr");
-    headers.forEach(h => {
-      const th = document.createElement("th");
-      const indicator = (sortKey === h) ? (sortDir === "asc" ? "▲" : "▼") : "↕";
-      th.innerHTML = `${escapeHTML(h)} <span class="sort">${indicator}</span>`;
-      th.addEventListener("click", () => {
-        if (sortKey === h) {
-          sortDir = (sortDir === "asc") ? "desc" : "asc";
-        } else {
-          sortKey = h;
-          sortDir = "asc";
-        }
-        applySort();
-        render();
-      });
-      tr.appendChild(th);
-    });
-    thead.innerHTML = "";
-    thead.appendChild(tr);
-  }
-
-  function applyFilter() {
-    const q = searchInput.value.trim().toLowerCase();
-    if (!q) {
-      filteredRows = [...rawRows];
-      page = 1;
-      return;
-    }
-
-    filteredRows = rawRows.filter(r => {
-      // busca en todas las columnas
-      for (const k of headers) {
-        const v = (r[k] ?? "").toString().toLowerCase();
-        if (v.includes(q)) return true;
-      }
-      return false;
-    });
-
-    page = 1;
-  }
-
-  function toSortableValue(v) {
-    if (v === null || v === undefined) return { type: "str", value: "" };
-
-    const s = v.toString().trim();
-    if (s === "") return { type: "str", value: "" };
-
-    // intenta numérico (incluye decimales)
-    const num = Number(s.replace(",", "."));
-    if (!Number.isNaN(num) && s.match(/^-?\d+([.,]\d+)?$/)) {
-      return { type: "num", value: num };
-    }
-
-    return { type: "str", value: s.toLowerCase() };
-  }
-
-  function applySort() {
-    if (!sortKey) return;
-
-    filteredRows.sort((a, b) => {
-      const av = toSortableValue(a[sortKey]);
-      const bv = toSortableValue(b[sortKey]);
-
-      if (av.type === "num" && bv.type === "num") {
-        return sortDir === "asc" ? av.value - bv.value : bv.value - av.value;
-      }
-      // fallback string
-      if (av.value < bv.value) return sortDir === "asc" ? -1 : 1;
-      if (av.value > bv.value) return sortDir === "asc" ? 1 : -1;
-      return 0;
-    });
-  }
-
-  function render() {
-    setCounts();
-    buildHeader();
-
-    const totalPages = Math.max(1, Math.ceil(filteredRows.length / pageSize));
-    page = Math.min(page, totalPages);
-
-    const start = (page - 1) * pageSize;
-    const end = Math.min(start + pageSize, filteredRows.length);
-    const pageRows = filteredRows.slice(start, end);
-
-    tbody.innerHTML = "";
-    pageRows.forEach(r => {
-      const tr = document.createElement("tr");
-      headers.forEach(h => {
-        const td = document.createElement("td");
-        td.textContent = r[h] ?? "";
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-
-    pageStatus.textContent = `Página ${page} / ${totalPages} · filas ${start + 1}-${end}`;
-    prevBtn.disabled = page <= 1;
-    nextBtn.disabled = page >= totalPages;
-  }
-
-  function escapeHTML(str) {
-    return str.replace(/[&<>"']/g, (m) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#039;"
-    }[m]));
-  }
-
-  async function init() {
-    document.getElementById("year").textContent = new Date().getFullYear().toString();
-
-    try {
-      loadStatus.textContent = "Cargando CSV…";
-      const resp = await fetch(CSV_URL, { cache: "no-store" });
-      if (!resp.ok) throw new Error("No se pudo cargar " + CSV_URL + " (HTTP " + resp.status + ")");
-
-      const text = await resp.text();
-      const parsed = parseCSV(text);
-
-      headers = parsed.headers;
-      rawRows = parsed.rows;
-      filteredRows = [...rawRows];
-
-      loadStatus.textContent = `Listo: cargadas ${rawRows.length.toLocaleString("es-AR")} filas.`;
-      sortKey = null;
-      sortDir = "asc";
-      page = 1;
-      pageSize = Number(pageSizeSelect.value);
-
-      render();
-    } catch (err) {
-      console.error(err);
-      loadStatus.textContent = "Error cargando el dataset. Verificá que exista public_data/df_players.csv y que GitHub Pages esté actualizado.";
-      loadStatus.style.color = "#b91c1c";
-    }
-  }
-
-  // Eventos
-  searchInput.addEventListener("input", () => {
-    applyFilter();
-    applySort();
-    render();
-  });
-
-  prevBtn.addEventListener("click", () => {
-    page = Math.max(1, page - 1);
-    render();
-  });
-
-  nextBtn.addEventListener("click", () => {
-    page = page + 1;
-    render();
-  });
-
-  pageSizeSelect.addEventListener("change", () => {
-    pageSize = Number(pageSizeSelect.value);
-    page = 1;
-    render();
-  });
-
-  init();
-</script>
+  <script src="assets/app.js" defer></script>
 </body>
 </html>

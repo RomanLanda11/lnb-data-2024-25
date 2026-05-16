@@ -1,42 +1,34 @@
-# Datos públicos – Tesis de Licenciatura en Estadística  
-### Autor: Román Landa (UNR)
+# Datos públicos · Tesina Moneyball en la Liga Nacional
 
-Este repositorio contiene los datos utilizados en la tesis de Licenciatura en Estadística, consistentes en partidos correspondientes a la temporada 2024/2025 de la Liga Nacional de Básquet (Argentina).  
+Autor: Román Landa · Universidad Nacional de Rosario  
+Marca: GL Basket Data
 
-Todos los archivos se encuentran disponibles en formato `.parquet` para su descarga pública.
+Este repositorio publica los datos utilizados en la tesina de Licenciatura en Estadística sobre la temporada 2024/25 de la Liga Nacional de Básquet de Argentina.
 
----
+La web está disponible en:
 
-## 🔗 Acceso a los datos
+https://romanlanda11.github.io/lnb-data-2024-25/
 
-Los datos pueden visualizarse y descargarse directamente desde la siguiente página:
+## Contenido
 
-➡️ **https://romanlanda11.github.io/lnb-data-2024-25/**
+- `index.html`: página principal publicada con GitHub Pages.
+- `assets/app.css`: estilos públicos de la web.
+- `assets/app.js`: filtros, tabla interactiva y explorador de partidos.
+- `style/`: identidad privada de marca ignorada por Git.
+- `public_data/df_players.csv`: dataset consolidado de jugadores.
+- `public_data/*.parquet`: archivos de partidos.
+- `public_data/manifest.json`: listado estático usado por la web para mostrar y descargar partidos.
 
-Esta página es generada automáticamente mediante GitHub Pages y lista todos los archivos disponibles dentro de la carpeta `public_data/`.
+## Web
 
----
+La página permite:
 
-## 📁 Estructura del repositorio
+- Buscar y filtrar jugadores por equipo, rival y titularidad.
+- Alternar grupos de columnas: principales, totales, por 40 minutos, avanzadas o todas.
+- Ordenar columnas y paginar la tabla.
+- Explorar partidos parquet por equipo, mes o texto libre.
+- Descargar el CSV consolidado y los archivos parquet individuales.
 
-```
+## Cita sugerida
 
-```
-
----
-
-## 📘 Descripción general
-
-- **Formato:** Parquet  
-- **Contenido:** Información de partidos scrapeados de la temporada 2024/2025.  
-- **Objetivo:** Facilitar la reproducibilidad y el acceso público a los datos utilizados en el desarrollo de la tesis.  
-
-Los datos se presentan tal como fueron recolectados y procesados en el trabajo, sin agregados ni modificaciones posteriores.
-
----
-
-## 📄 Cita sugerida
-
-Si desea citar este recurso:
-
-> Landa, R. (2025). *Datos públicos de la tesis de Licenciatura – Liga Nacional de Básquet 2024/2025*. Repositorio GitHub. Disponible en: https://romanlanda11.github.io/lnb-data-2024-25/
+Landa, R. (2025). *Datos públicos de la tesina de Licenciatura · Liga Nacional de Básquet 2024/25*. Repositorio GitHub. Disponible en: https://romanlanda11.github.io/lnb-data-2024-25/
